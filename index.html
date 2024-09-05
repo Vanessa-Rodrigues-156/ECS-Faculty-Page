@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ECS Faculty - CRCE</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="app.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet">
 </head>
 <style>
@@ -193,19 +194,27 @@
             </div>
 
         </div>
-        <div id="faculty">
+        <div id="faculty" ng-controller="SearchController">
             <div class="p-3 mt-48 text-white backdrop-brightness-50 rounded-2xl">
                 <h1 class="text-6xl font-semibold leading-normal text-center">ECS Faculties</h1>
-                <div>
+                <div class="flex space-x-[45vw] w-full ">
+                <div class="">
                     <button id="toggleBtn" class="px-4 py-2 text-white bg-blue-500 rounded">
                         Switch to List View
                     </button>
                 </div>
+                <div >
+                    <div>
+                        <input type="text" ng-model="query" placeholder="Search..." class="px-4 py-2 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" onkeyup="search()">
+                    </div>
+                </div>
+                </div>
             </div>
             <div id="content">
                 <div class="grid-item">
-                    <div class="flex mt-5">
+                    <div class="flex mt-5" ng-reapeat="faculty in faculties | filter:query">
                         <div
+                            
                             class="max-w-sm mx-10 mt-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                             <a href="#">
                                 <img class="w-full rounded-t-lg"
@@ -231,7 +240,7 @@
                             </div>
                         </div>
                         <!-- card 2 -->
-                        <div
+                        <div 
                             class="max-w-sm mx-10 mt-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                             <a href="#">
                                 <img class="w-full rounded-t-lg"
@@ -259,7 +268,7 @@
                             </div>
                         </div>
                         <!-- Card 3 -->
-                        <div
+                        <div 
                             class="max-w-sm mx-10 mt-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                             <a href="#">
                                 <img class="w-full rounded-t-lg"
@@ -290,8 +299,8 @@
 
                     </div>
 
-
-                    <div>
+               <!--card 4 -->
+                    <div >
                         <div class="flex mt-8">
                             <div
                                 class="max-w-sm mx-10 mt-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
