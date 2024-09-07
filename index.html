@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ECS Faculty - CRCE</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet">
 </head>
 <style>
@@ -193,17 +195,23 @@
             </div>
 
         </div>
-        <div id="faculty">
+        <div ng-app="facultyApp" ng-controller="FacultyController" id="faculty">
             <div class="p-3 mt-48 text-white backdrop-brightness-50 rounded-2xl">
                 <h1 class="text-6xl font-semibold leading-normal text-center">ECS Faculties</h1>
-                <div>
-                    <button id="toggleBtn" class="px-4 py-2 text-white bg-blue-500 rounded">
-                        Switch to List View
-                    </button>
+                <div class="flex-col justify-between">
+                    <div class="justify-start">
+                        <button id="toggleBtn" class="px-4 py-2 text-white bg-blue-500 rounded">
+                            Switch to List View
+                        </button>
+                    </div>
+                    <!-- <div>
+                        <input type="text" ng-model="query" placeholder="Search..."
+                            class="px-4 py-2 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                    </div> -->
                 </div>
             </div>
             <div id="content">
-                <div class="grid-item">
+                <div class="grid-item" ng-repeat="faculty in faculties | filter:query">
                     <div class="flex mt-5">
                         <div
                             class="max-w-sm mx-10 mt-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -511,14 +519,14 @@
                     </div>
                 </div>
                 <!--list view-->
-                <div class="hidden list-item">
+                <div class="hidden list-item mt-8 backdrop-brightness-50 rounded-2xl pt-3 px-3 ">
                     <ul role="list" class="divide-y divide-gray-100">
                         <li class="flex justify-between py-5 gap-x-6">
                             <div class="flex min-w-0 gap-x-4">
                                 <img class="flex-none w-12 h-12 rounded-full bg-gray-50"
                                     src="https://fragnel.edu.in/images/crce/department/ecs/dvbhoir.jpg" alt="">
                                 <div class="flex-auto min-w-0">
-                                    <p class="text-sm font-semibold leading-6 text-gray-900">Dr. Deepak Bhoir</p>
+                                    <p class="text-sm font-semibold leading-6 text-white">Dr. Deepak Bhoir</p>
                                     <p class="mt-1 text-xs leading-5 text-blue-500 truncate">Ph.D.</p>
                                 </div>
                             </div>
@@ -544,7 +552,7 @@
                                 <img class="flex-none w-12 h-12 rounded-full bg-gray-50"
                                     src="https://fragnel.edu.in/images/crce/department/ecs/bin.jpg" alt="">
                                 <div class="flex-auto min-w-0">
-                                    <p class="text-sm font-semibold leading-6 text-gray-900">Ms. Binsy Joseph</p>
+                                    <p class="text-sm font-semibold leading-6 text-white">Ms. Binsy Joseph</p>
                                     <p class="mt-1 text-xs leading-5 text-blue-500 truncate">M.E., (Pursuing PhD)
                                     </p>
                                 </div>
@@ -570,7 +578,7 @@
                                 <img class="flex-none w-12 h-12 rounded-full bg-gray-50"
                                     src="https://fragnel.edu.in/images/crce/department/comps/dipali.jpg" alt="">
                                 <div class="flex-auto min-w-0">
-                                    <p class="text-sm font-semibold leading-6 text-gray-900">Ms. Dipali Koshti</p>
+                                    <p class="text-sm font-semibold leading-6 text-white">Ms. Dipali Koshti</p>
                                     <p class="mt-1 text-xs leading-5 text-blue-500 truncate">M.E., (Pursuing PhD)
                                     </p>
                                 </div>
@@ -596,7 +604,7 @@
                                 <img class="flex-none w-12 h-12 rounded-full bg-gray-50"
                                     src="https://fragnel.edu.in/images/crce/department/ecs/vaibhav.jpg" alt="">
                                 <div class="flex-auto min-w-0">
-                                    <p class="text-sm font-semibold leading-6 text-gray-900">Mr. Vaibhav Godbole</p>
+                                    <p class="text-sm font-semibold leading-6 text-white">Mr. Vaibhav Godbole</p>
                                     <p class="mt-1 text-xs leading-5 text-blue-500 truncate">M.E., (Pursuing PhD)
                                     </p>
                                 </div>
@@ -622,7 +630,7 @@
                                 <img class="flex-none w-12 h-12 rounded-full bg-gray-50"
                                     src="https://fragnel.edu.in/images/crce/department/ecs/archana.jpg" alt="">
                                 <div class="flex-auto min-w-0">
-                                    <p class="text-sm font-semibold leading-6 text-gray-900">Mrs. Archana Lopes</p>
+                                    <p class="text-sm font-semibold leading-6 text-white">Mrs. Archana Lopes</p>
                                     <p class="mt-1 text-xs leading-5 text-blue-500 truncate">M.E., (Pursuing PhD)
                                     </p>
                                 </div>
@@ -648,7 +656,7 @@
                                 <img class="flex-none w-12 h-12 rounded-full bg-gray-50"
                                     src="	https://fragnel.edu.in/images/crce/department/ecs/jayenmodi.jpg" alt="">
                                 <div class="flex-auto min-w-0">
-                                    <p class="text-sm font-semibold leading-6 text-gray-900">Mr. Jayen Modi</p>
+                                    <p class="text-sm font-semibold leading-6 text-white">Mr. Jayen Modi</p>
                                     <p class="mt-1 text-xs leading-5 text-blue-500 truncate">M.E., (Pursuing PhD)
                                     </p>
                                 </div>
@@ -674,7 +682,7 @@
                                 <img class="flex-none w-12 h-12 rounded-full bg-gray-50"
                                     src="https://fragnel.edu.in/images/crce/department/it/prajakta.jpg" alt="">
                                 <div class="flex-auto min-w-0">
-                                    <p class="text-sm font-semibold leading-6 text-gray-900">Mrs. Prajakta Bhangale
+                                    <p class="text-sm font-semibold leading-6 text-white">Mrs. Prajakta Bhangale
                                     </p>
                                     <p class="mt-1 text-xs leading-5 text-blue-500 truncate">M.E., (Pursuing PhD)
                                     </p>
@@ -701,7 +709,7 @@
                                 <img class="flex-none w-12 h-12 rounded-full bg-gray-50"
                                     src="	https://fragnel.edu.in/images/2024/06/28/jeenal.jpg" alt="">
                                 <div class="flex-auto min-w-0">
-                                    <p class="text-sm font-semibold leading-6 text-gray-900">Mrs. Jeenal Rambhia</p>
+                                    <p class="text-sm font-semibold leading-6 text-white">Mrs. Jeenal Rambhia</p>
                                     <p class="mt-1 text-xs leading-5 text-blue-500 truncate">M.E., (Pursuing PhD)
                                     </p>
                                 </div>
@@ -727,7 +735,7 @@
                                 <img class="flex-none w-12 h-12 rounded-full bg-gray-50"
                                     src="https://fragnel.edu.in/images/2024/08/17/image_123650291.jpg" alt="">
                                 <div class="flex-auto min-w-0">
-                                    <p class="text-sm font-semibold leading-6 text-gray-900">Mrs. Garima Singh</p>
+                                    <p class="text-sm font-semibold leading-6 text-white">Mrs. Garima Singh</p>
                                     <p class="mt-1 text-xs leading-5 text-blue-500 truncate">M.E.</p>
                                 </div>
                             </div>
@@ -751,7 +759,7 @@
                                 <img class="flex-none w-12 h-12 rounded-full bg-gray-50"
                                     src="https://fragnel.edu.in/images/2024/06/28/flynn.jpg" alt="">
                                 <div class="flex-auto min-w-0">
-                                    <p class="text-sm font-semibold leading-6 text-gray-900">Mr. Flynn Dennis Jiu
+                                    <p class="text-sm font-semibold leading-6 text-white">Mr. Flynn Dennis Jiu
                                     </p>
                                     <p class="mt-1 text-xs leading-5 text-blue-500 truncate">M.E.</p>
                                 </div>
@@ -776,11 +784,8 @@
 
             </div>
             <!-- Modal for Mr. Bhoir -->
-<<<<<<< HEAD
+
             <div id="popup-modal-bhoir" tabindex="-1"
-=======
-            <div id="popup-modal" tabindex="-1"
->>>>>>> 33e3f04ed5bc8a878325f8b2069edb16f420140e
                 class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                 <div class="relative p-4 w-full max-w-md max-h-full">
                     <div class="relative bg-white rounded-lg shadow dark:bg-cyan-700">
@@ -848,11 +853,23 @@
             </div>
         </div>
 
-<<<<<<< HEAD
-    
-=======
+
+        <!-- </div> -->
+        <!-- Modal for Ms. Dipali -->
+        <div id="popup-modal-dipali" tabindex="-1"
+            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative p-4 w-full max-w-md max-h-full">
+                <div class="relative bg-white rounded-lg shadow dark:bg-cyan-700">
+                    <button type="button"
+                        class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-hide="popup-modal-dipali">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+
     <!-- </div> -->
->>>>>>> 33e3f04ed5bc8a878325f8b2069edb16f420140e
     <!-- Modal for Ms. Dipali -->
     <div id="popup-modal-dipali" tabindex="-1"
         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -867,293 +884,300 @@
                             d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                     </svg>
 
-                    <span class="sr-only">Close modal</span>
-                </button>
-                <div class="p-4 md:p-7 text-center">
-                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Do you want to read more on
-                        Google Scholar?</h3>
-                    <button data-modal-hide="popup-modal-dipali" type="button"
-                        class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                        <a href="https://scholar.google.com/citations?hl=en&user=yr5JXeEAAAAJ"
-                            class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                            Yes
-                        </a>
+                        <span class="sr-only">Close modal</span>
                     </button>
-                    <button data-modal-hide="popup-modal-dipali" type="button"
-                        class="py-5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No,
-                        cancel</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal for Mr. Vaibhav -->
-    <div id="popup-modal-vaibhav" tabindex="-1"
-        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-        <div class="relative p-4 w-full max-w-md max-h-full">
-            <div class="relative bg-white rounded-lg shadow dark:bg-cyan-700">
-                <button type="button"
-                    class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                    data-modal-hide="popup-modal-vaibhav">
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                    </svg>
-
-                    <span class="sr-only">Close modal</span>
-                </button>
-                <div class="p-4 md:p-7 text-center">
-                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Do you want to read more on
-                        Google Scholar?</h3>
-                    <button data-modal-hide="popup-modal-vaibhav" type="button"
-                        class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                        <a href="https://scholar.google.com/citations?hl=en&user=eJ2EAQIAAAAJ"
+                    <div class="p-4 md:p-7 text-center">
+                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Do you want to read more
+                            on
+                            Google Scholar?</h3>
+                        <button data-modal-hide="popup-modal-dipali" type="button"
                             class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                            Yes
-                        </a>
-                    </button>
-                    <button data-modal-hide="popup-modal-vaibhav" type="button"
-                        class="py-5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No,
-                        cancel</button>
+                            <a href="https://scholar.google.com/citations?hl=en&user=yr5JXeEAAAAJ"
+                                class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                Yes
+                            </a>
+                        </button>
+                        <button data-modal-hide="popup-modal-dipali" type="button"
+                            class="py-5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No,
+                            cancel</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Modal for Ms. Archana -->
-    <div id="popup-modal-archana" tabindex="-1"
-        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-        <div class="relative p-4 w-full max-w-md max-h-full">
-            <div class="relative bg-white rounded-lg shadow dark:bg-cyan-700">
-                <button type="button"
-                    class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                    data-modal-hide="popup-modal-archana">
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                    </svg>
+        <!-- Modal for Mr. Vaibhav -->
+        <div id="popup-modal-vaibhav" tabindex="-1"
+            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative p-4 w-full max-w-md max-h-full">
+                <div class="relative bg-white rounded-lg shadow dark:bg-cyan-700">
+                    <button type="button"
+                        class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-hide="popup-modal-vaibhav">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
 
-                    <span class="sr-only">Close modal</span>
-                </button>
-                <div class="p-4 md:p-7 text-center">
-                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Do you want to read more on
-                        Google Scholar?</h3>
-                    <button data-modal-hide="popup-modal-archana" type="button"
-                        class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                        <a href="https://scholar.google.com/citations?hl=en&user=ufzIfxAAAAAJ"
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                    <div class="p-4 md:p-7 text-center">
+                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Do you want to read more
+                            on
+                            Google Scholar?</h3>
+                        <button data-modal-hide="popup-modal-vaibhav" type="button"
                             class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                            Yes
-                        </a>
-                    </button>
-                    <button data-modal-hide="popup-modal-archana" type="button"
-                        class="py-5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No,
-                        cancel</button>
+                            <a href="https://scholar.google.com/citations?hl=en&user=eJ2EAQIAAAAJ"
+                                class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                Yes
+                            </a>
+                        </button>
+                        <button data-modal-hide="popup-modal-vaibhav" type="button"
+                            class="py-5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No,
+                            cancel</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Modal for Mr. Jayen -->
-    <div id="popup-modal-jayen" tabindex="-1"
-        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-        <div class="relative p-4 w-full max-w-md max-h-full">
-            <div class="relative bg-white rounded-lg shadow dark:bg-cyan-700">
-                <button type="button"
-                    class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                    data-modal-hide="popup-modal-jayen">
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                    </svg>
+        <!-- Modal for Ms. Archana -->
+        <div id="popup-modal-archana" tabindex="-1"
+            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative p-4 w-full max-w-md max-h-full">
+                <div class="relative bg-white rounded-lg shadow dark:bg-cyan-700">
+                    <button type="button"
+                        class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-hide="popup-modal-archana">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
 
-                    <span class="sr-only">Close modal</span>
-                </button>
-                <div class="p-4 md:p-7 text-center">
-                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Do you want to read more on
-                        Google Scholar?</h3>
-                    <button data-modal-hide="popup-modal-jayen" type="button"
-                        class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                        <a href="https://scholar.google.com/citations?hl=en&user=3BDviVEAAAAJ"
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                    <div class="p-4 md:p-7 text-center">
+                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Do you want to read more
+                            on
+                            Google Scholar?</h3>
+                        <button data-modal-hide="popup-modal-archana" type="button"
                             class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                            Yes
-                        </a>
-                    </button>
-                    <button data-modal-hide="popup-modal-jayen" type="button"
-                        class="py-5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No,
-                        cancel</button>
+                            <a href="https://scholar.google.com/citations?hl=en&user=ufzIfxAAAAAJ"
+                                class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                Yes
+                            </a>
+                        </button>
+                        <button data-modal-hide="popup-modal-archana" type="button"
+                            class="py-5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No,
+                            cancel</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        <!-- Modal for Mr. Jayen -->
+        <div id="popup-modal-jayen" tabindex="-1"
+            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative p-4 w-full max-w-md max-h-full">
+                <div class="relative bg-white rounded-lg shadow dark:bg-cyan-700">
+                    <button type="button"
+                        class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-hide="popup-modal-jayen">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
 
-
-    <!-- Modal for Ms. Prajakta -->
-    <div id="popup-modal-prajakta" tabindex="-1"
-        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-        <div class="relative p-4 w-full max-w-md max-h-full">
-            <div class="relative bg-white rounded-lg shadow dark:bg-cyan-700">
-                <button type="button"
-                    class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                    data-modal-hide="popup-modal-prajakta">
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                    </svg>
-
-                    <span class="sr-only">Close modal</span>
-                </button>
-                <div class="p-4 md:p-7 text-center">
-                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Do you want to read
-                        more on Google Scholar?</h3>
-                    <button data-modal-hide="popup-modal-prajakta" type="button"
-                        class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                        <a href="https://scholar.google.com/citations?hl=en&user=JrBUodcAAAAJ"
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                    <div class="p-4 md:p-7 text-center">
+                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Do you want to read more
+                            on
+                            Google Scholar?</h3>
+                        <button data-modal-hide="popup-modal-jayen" type="button"
                             class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                            Yes
-                        </a>
-                    </button>
-                    <button data-modal-hide="popup-modal-prajakta" type="button"
-                        class="py-5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No,
-                        cancel</button>
+                            <a href="https://scholar.google.com/citations?hl=en&user=3BDviVEAAAAJ"
+                                class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                Yes
+                            </a>
+                        </button>
+                        <button data-modal-hide="popup-modal-jayen" type="button"
+                            class="py-5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No,
+                            cancel</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Modal for Ms. Jeenal -->
-    <div id="popup-modal-jeenal" tabindex="-1"
-        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-        <div class="relative p-4 w-full max-w-md max-h-full">
-            <div class="relative bg-white rounded-lg shadow dark:bg-cyan-700">
-                <button type="button"
-                    class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                    data-modal-hide="popup-modal-jeenal">
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                    </svg>
 
-                    <span class="sr-only">Close modal</span>
-                </button>
-                <div class="p-4 md:p-7 text-center">
-                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Do you want to read more on
-                        Google Scholar?</h3>
-                    <button data-modal-hide="popup-modal-jeenal" type="button"
-                        class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                        <a href="https://scholar.google.com/citations?hl=en&user=lvIdJlIAAAAJ"
+
+        <!-- Modal for Ms. Prajakta -->
+        <div id="popup-modal-prajakta" tabindex="-1"
+            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative p-4 w-full max-w-md max-h-full">
+                <div class="relative bg-white rounded-lg shadow dark:bg-cyan-700">
+                    <button type="button"
+                        class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-hide="popup-modal-prajakta">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                    <div class="p-4 md:p-7 text-center">
+                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Do you want to read
+                            more on Google Scholar?</h3>
+                        <button data-modal-hide="popup-modal-prajakta" type="button"
                             class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                            Yes
-                        </a>
-                    </button>
-                    <button data-modal-hide="popup-modal-jeenal" type="button"
-                        class="py-5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No,
-                        cancel</button>
+                            <a href="https://scholar.google.com/citations?hl=en&user=JrBUodcAAAAJ"
+                                class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                Yes
+                            </a>
+                        </button>
+                        <button data-modal-hide="popup-modal-prajakta" type="button"
+                            class="py-5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No,
+                            cancel</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Modal for Ms. Garima -->
-    <div id="popup-modal-garima" tabindex="-1"
-        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-        <div class="relative p-4 w-full max-w-md max-h-full">
-            <div class="relative bg-white rounded-lg shadow dark:bg-cyan-700">
-                <button type="button"
-                    class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                    data-modal-hide="popup-modal-garima">
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                    </svg>
+        <!-- Modal for Ms. Jeenal -->
+        <div id="popup-modal-jeenal" tabindex="-1"
+            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative p-4 w-full max-w-md max-h-full">
+                <div class="relative bg-white rounded-lg shadow dark:bg-cyan-700">
+                    <button type="button"
+                        class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-hide="popup-modal-jeenal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
 
-                    <span class="sr-only">Close modal</span>
-                </button>
-                <div class="p-4 md:p-7 text-center">
-                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Do you want to read more on
-                        Google Scholar?</h3>
-                    <button data-modal-hide="popup-modal-garima" type="button"
-                        class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                        <a href="https://scholar.google.com/schhp?hl=en"
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                    <div class="p-4 md:p-7 text-center">
+                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Do you want to read more
+                            on
+                            Google Scholar?</h3>
+                        <button data-modal-hide="popup-modal-jeenal" type="button"
                             class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                            Yes
-                        </a>
-                    </button>
-                    <button data-modal-hide="popup-modal-garima" type="button"
-                        class="py-5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No,
-                        cancel</button>
+                            <a href="https://scholar.google.com/citations?hl=en&user=lvIdJlIAAAAJ"
+                                class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                Yes
+                            </a>
+                        </button>
+                        <button data-modal-hide="popup-modal-jeenal" type="button"
+                            class="py-5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No,
+                            cancel</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Modal for Flynn -->
-    <div id="popup-modal-flynn" tabindex="-1"
-        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-        <div class="relative p-4 w-full max-w-md max-h-full">
-            <div class="relative bg-white rounded-lg shadow dark:bg-cyan-700">
-                <button type="button"
-                    class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                    data-modal-hide="popup-modal-flynn">
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                    </svg>
+        <!-- Modal for Ms. Garima -->
+        <div id="popup-modal-garima" tabindex="-1"
+            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative p-4 w-full max-w-md max-h-full">
+                <div class="relative bg-white rounded-lg shadow dark:bg-cyan-700">
+                    <button type="button"
+                        class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-hide="popup-modal-garima">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
 
-                    <span class="sr-only">Close modal</span>
-                </button>
-                <div class="p-4 md:p-7 text-center">
-                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Do you want to read more on
-                        Google Scholar?</h3>
-                    <button data-modal-hide="popup-modal-flynn" type="button"
-                        class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                        <a href="https://scholar.google.com/schhp?hl=en"
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                    <div class="p-4 md:p-7 text-center">
+                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Do you want to read more
+                            on
+                            Google Scholar?</h3>
+                        <button data-modal-hide="popup-modal-garima" type="button"
                             class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                            Yes
-                        </a>
+                            <a href="https://scholar.google.com/schhp?hl=en"
+                                class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                Yes
+                            </a>
+                        </button>
+                        <button data-modal-hide="popup-modal-garima" type="button"
+                            class="py-5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No,
+                            cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal for Flynn -->
+        <div id="popup-modal-flynn" tabindex="-1"
+            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative p-4 w-full max-w-md max-h-full">
+                <div class="relative bg-white rounded-lg shadow dark:bg-cyan-700">
+                    <button type="button"
+                        class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-hide="popup-modal-flynn">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+
+                        <span class="sr-only">Close modal</span>
                     </button>
-                    <button data-modal-hide="popup-modal-flynn" type="button"
-                        class="py-5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No,
-                        cancel</button>
+                    <div class="p-4 md:p-7 text-center">
+                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Do you want to read more
+                            on
+                            Google Scholar?</h3>
+                        <button data-modal-hide="popup-modal-flynn" type="button"
+                            class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                            <a href="https://scholar.google.com/schhp?hl=en"
+                                class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                Yes
+                            </a>
+                        </button>
+                        <button data-modal-hide="popup-modal-flynn" type="button"
+                            class="py-5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No,
+                            cancel</button>
+                    </div>
                 </div>
             </div>
         </div>
+
+
+        <footer class="pt-3 pb-3 backdrop-brightness-50 rounded-2xl mt-44">
+            <div style="display: flex; justify-content: space-between; max-width: 1200px; margin: 0 auto;">
+                <div id="contact" style="flex: 1;">
+                    <h3 style="color: #4a90e2;">Fr. Conceicao Rodrigues College of Engineering</h3>
+                    <p class="text-green-200">Fr. Agnel Ashram, Bandstand, <br> Bandra (W). Mumbai 400 050. MH.
+                        IN</p>
+                </div>
+                <div style="flex: 1;">
+                    <h4 style="color: #4a90e2;">Quick Links</h4>
+                    <ul style="list-style-type: none; padding: 0;">
+                        <li><a href="https://fragnel.edu.in/" style="color: #ffffff; text-decoration: none;">Official
+                                Website</a></li>
+
+                    </ul>
+                </div>
+                <div style="flex: 1;">
+                    <h4 style="color: #4a90e2;">Connect With Us</h4>
+                    <div>
+                        <!-- Add social media icons here -->
+                        <a href="#" class="text-white ">+91 22-6711 4000</a>
+                        <br>
+                        <a href="#" class="text-white ">+91 22-6711 4100</a>
+                        <br>
+                        <a href="#" class="text-white ">crce@frcrce.ac.in</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-white"
+                style="text-align: center; margin-top: 20px; border-top: 1px solid #4a90e2; padding-top: 20px;">
+                <p>&copy; 2024 Designed and Developed by David Porathur, Aahana Peter & Freia Quadros</p>
+            </div>
+        </footer>
     </div>
-
-
-    <footer class="pt-3 pb-3 backdrop-brightness-50 rounded-2xl mt-44">
-        <div style="display: flex; justify-content: space-between; max-width: 1200px; margin: 0 auto;">
-            <div id="contact" style="flex: 1;">
-                <h3 style="color: #4a90e2;">Fr. Conceicao Rodrigues College of Engineering</h3>
-                <p class="text-green-200">Fr. Agnel Ashram, Bandstand, <br> Bandra (W). Mumbai 400 050. MH.
-                    IN</p>
-            </div>
-            <div style="flex: 1;">
-                <h4 style="color: #4a90e2;">Quick Links</h4>
-                <ul style="list-style-type: none; padding: 0;">
-                    <li><a href="https://fragnel.edu.in/" style="color: #ffffff; text-decoration: none;">Official
-                            Website</a></li>
-
-                </ul>
-            </div>
-            <div style="flex: 1;">
-                <h4 style="color: #4a90e2;">Connect With Us</h4>
-                <div>
-                    <!-- Add social media icons here -->
-                    <a href="#" class="text-white ">+91 22-6711 4000</a>
-                    <br>
-                    <a href="#" class="text-white ">+91 22-6711 4100</a>
-                    <br>
-                    <a href="#" class="text-white ">crce@frcrce.ac.in</a>
-                </div>
-            </div>
-        </div>
-        <div class="text-white"
-            style="text-align: center; margin-top: 20px; border-top: 1px solid #4a90e2; padding-top: 20px;">
-            <p>&copy; 2024 Designed and Developed by David Porathur, Aahana Peter & Freia Quadros</p>
-        </div>
-    </footer>
-</div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <script>
         window.addEventListener('scroll', function () {
@@ -1216,6 +1240,14 @@
                 toggleBtn.textContent = 'Switch to Grid View';
             }
         });
+
+        // var app = angular.module("facultyApp", []);
+
+        // app.controller("FacultyController", function ($scope) {
+        //     $scope.query = "";
+        //     $scope.faculties = [
+        //     ];
+        // });
 
     </script>
 </body>
