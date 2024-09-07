@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Faculty Search</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="container mx-auto p-4">
+      <div class="mb-4">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search faculties..."
+          class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
+
+      <div
+        id="facultyGrid"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </div>
+
+    <script>
+      const faculties = [
+        {
+          id: 1,
+          name: "Dr. Deepak Bhoir",
+          image:
+            "https://fragnel.edu.in/images/crce/department/ecs/dvbhoir.jpg",
+          profile:
+            "https://frcrce.ac.in/images/crce/department/ecs/profile/dvbhoir_profile.pdf",
+          description:
+            "Instrumentation, Biomedical Instrumentation, Virtual Instrumentation, VLSI Design ,MEMS , Automation",
+          qualification: "Ph.D.Electronics Engineering",
+        },
+        {
+          id: 2,
+          name: "Ms. Binsy Joseph",
+          image: "https://fragnel.edu.in/images/crce/department/ecs/bin.jpg",
+          profile:
+            "http://frcrce.ac.in/images/crce/department/ecs/profile/binsy_joseph_profile.pdf",
+          description:
+            "Power electronics, Electrial Vehicle Battery Management, Renewable Energy System",
+          qualification: "M.E., (Pursuing PhD)",
+        },
+        {
+          id: 3,
+          name: " Ms. Dipali Koshti",
+          image:
+            "https://fragnel.edu.in/images/crce/department/comps/dipali.jpg",
+          profile:
+            "https://frcrce.ac.in/images/crce/department/comps/profile/dipali_koshti_profile.pdf",
+          description:
+            " Deep Learning, Machine Learning, Mobile Computing, Soft Computing, Database Management Systems",
+          qualification: "M.E., (Pursuing PhD)",
+        },
+      ];
+
+      const searchInput = document.getElementById("searchInput");
+      const facultyGrid = document.getElementById("facultyGrid");
+
+      function createFacultyCard(faculty) {
+        return `
+                <div class="bg-blue-100 p-4 border-2 border border-blue-900 rounded-lg shadow-md text-center">
+                    <img
+                        class="max-w-[200px] m-auto rounded-lg border-2 border border-blue-900"
+                        src="${faculty.image}"
+                        alt="${faculty.name}"
+                    />
+                    <h2 class="text-xl font-bold mb-2">${faculty.name}</h2>
+                    <p class="text-gray-600 mb-1">Qualification: ${faculty.qualification}</p>
+                    <p class="text-gray-600">Area of Interest: ${faculty.description}</p>
+                </div>
+            `;
+      }
+      // ye github co pilot ka kamal
+      function renderFaculties(facultiesToRender) {
+        facultyGrid.innerHTML = facultiesToRender
+          .map(createFacultyCard)
+          .join("");
+      }
+      // ye mera dimag
+      function onSearch() {
+        const searchTerm = searchInput.value.toLowerCase();
+        // this will filter the content of the grid cards based on the search term.. aadha shabda se bhi chalega ye code.
+        const filteredFaculties = faculties.filter(
+          (faculty) =>
+            faculty.name.toLowerCase().includes(searchTerm) ||
+            faculty.qualification.toLowerCase().includes(searchTerm) ||
+            faculty.description.toLowerCase().includes(searchTerm)
+        );
+        //this .include method is the best shit i found in the js documentation (insert nessa grinning face)
+        renderFaculties(filteredFaculties);
+      }
+      //this is the most important this binds the search bar to the grid items
+      //event listeners basically listen to the events and or any chote se chote changes and then calls required the function
+      searchInput.addEventListener("input", onSearch);
+
+      // Initial render so that there is something even when you dont render anything pehle se
+      renderFaculties(faculties);
+    </script>
+  </body>
+</html>

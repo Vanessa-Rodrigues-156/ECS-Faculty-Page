@@ -31,51 +31,45 @@
           </div>
         </div>
       </div>
-      <div id="content">
+      <div id="content" class="border-2">
         <div
-          class="grid-item"
+          class="border-gray-100 border"
           ng-repeat="faculty in faculties | filter:query">
-          <div class="flex mt-5">
-            <div
-              class="max-w-sm mx-10 mt-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-              <a href="#">
-                <img
-                  class="w-full rounded-t-lg"
-                  ng-src="{{faculty.image}}"
-                  alt="{{faculty.name}}" />
-              </a>
-              <div class="p-5">
-                <a href="#">
-                  <h5
-                    class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    {{faculty.name}}
-                  </h5>
-                </a>
-                <p
-                  class="mb-3 font-normal text-gray-700 dark:text-gray-400"
-                  ng-bind-html="faculty.description"></p>
-                <a
-                  ng-href="{{faculty.profile}}"
-                  class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                  Profile
-                  <svg
-                    class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 10">
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M1 5h12m0 0L9 1m4 4L9 9" />
-                  </svg>
-                </a>
-              </div>
-            </div>
+          <div class="flex mt-5 gap-x-4">
+        <div
+          class="max-w-[200px] mx-10 mt-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <a href="#">
+            <img
+          class="max-w-[200px] w-[100px] h-[200px] rounded-t-lg"
+          ng-src="{{faculty.image}}"
+          alt="{{faculty.name}}" />
+          </a>
+          <div class="p-5">
+            <a href="#">
+          <h5
+            class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            {{faculty.name}}
+          </h5>
+            </a>
+            <h3>Qualification:</h3>
+            <p
+          class="mb-3 font-normal text-gray-700 dark:text-gray-400"
+          >{{faculty.qualification}}</p>
+
+            <h3>Area of Interest:</h3>
+            <p
+          class="mb-3 font-normal text-gray-700 dark:text-gray-400"
+          ng-bind-html="{{faculty.description}}">{{faculty.description}}</p>
+            <a
+          ng-href="{{faculty.profile}}"
+          class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+          Profile
+            </a>
           </div>
         </div>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
     <script>
@@ -91,76 +85,77 @@
             profile:
               "https://frcrce.ac.in/images/crce/department/ecs/profile/dvbhoir_profile.pdf",
             description:
-              "Ph.D.<br><b>Areas of interest:</b><br>Instrumentation, Biomedical Instrumentation, Virtual Instrumentation, VLSI Design ,MEMS , Automation",
+              "Instrumentation, Biomedical Instrumentation, Virtual Instrumentation, VLSI Design ,MEMS , Automation",
+            qualification: "Ph.D.Electronics Engineering",
           },
           {
             name: "Ms. Binsy Joseph",
             image: "https://fragnel.edu.in/images/crce/department/ecs/bin.jpg",
             profile:
               "http://frcrce.ac.in/images/crce/department/ecs/profile/binsy_joseph_profile.pdf",
-            description:
-              "M.E., (Pursuing PhD)<br><b>Areas of interest:</b><br>Power electronics, Electrial Vehicle Battery Management, Renewable Energy System",
-          },
-          {
-            name: "Ms. Dipali Koshti",
-            image:
-              "https://fragnel.edu.in/images/crce/department/comps/dipali.jpg",
-            profile:
-              "https://frcrce.ac.in/images/crce/department/ecs/profile/dipali_koshti_profile.pdf",
-            description:
-              "M.E., (Pursuing PhD)<br><b>Areas of interest:</b><br> Deep Learning, Machine Learning, Mobile Computing, Soft Computing, Database Management Systems",
-          },
-          {
-            name: "Mr. Vaibhav Godbole",
-            image:
-              "https://fragnel.edu.in/images/crce/department/ecs/vaibhav.jpg",
-            profile:
-              "https://frcrce.ac.in/images/crce/department/ecs/profile/vaibhavprofile.pdf",
-            description:
-              "M.E., (Pursuing PhD)<br><b>Areas of interest:</b><br> Web Programming, Linux System Administration, Machine Learning, Bio-inspired Computation, Big Data Analytics",
-          },
-          {
-            name: "Mrs. Archana Lopes",
-            image:
-              "https://fragnel.edu.in/images/crce/department/ecs/archana.jpg",
-            profile:
-              "http://frcrce.ac.in/images/crce/department/ecs/profile/Archana_Profile.pdf",
-            description:
-              "M.E., (Pursuing PhD)<br><b>Areas of interest:</b><br>Soft Computing, Computer Vision, Machine Learning, Data structures and algorithms, Discrete structures, Automata theory, Object oriented programming",
-          },
-          {
-            name: "Mr. Jayen Modi",
-            image:
-              "https://fragnel.edu.in/images/crce/department/ecs/jayenmodi.jpg",
-            profile:
-              "https://frcrce.ac.in/images/crce/department/ecs/profile/Jayen_Modi_profile.pdf",
-            description:
-              "M.E., (Pursuing PhD)<br><b>Areas of interest:</b><br>Electronic Devices & Circuits, Signal Conditioning Circuit Design, Control Systems Engineering, Instrumentation Systems, Industrial Automation & Process Control, Management Information Systems, Project Management",
-          },
-          {
-            name: "Mrs. Prajakta Bhangale",
-            image:
-              "https://fragnel.edu.in/images/crce/department/it/prajakta.jpg",
-            profile: "",
-            description:
-              "M.E., (Pursuing PhD)<br><b>Areas of interest:</b><br> Security, Block Chain Technology, Big data Analysis, Java Programming",
-          },
-          {
-            name: "Mrs. Jeenal Rambhia",
-            image: "https://fragnel.edu.in/images/2024/06/28/jeenal.jpg",
-            profile:
-              "https://fragnel.edu.in/media/attachments/2024/06/28/jeenal-rambhia-profile.pdf",
-            description:
-              "M.E., (Pursuing PhD)<br><b>Areas of interest:</b><br> Biomedical Signal Processing, Neuroscience, Artificial Intelligence",
-          },
-          {
-            name: "Mrs. Garima Singh",
-            image:
-              "https://fragnel.edu.in/images/2024/08/17/image_123650291.jpg",
-            profile: "",
-            description:
-              "M.E.<br><b>Areas of interest:</b><br>VLSI Design, Internet of Things, Image Processing, Machine learning",
-          },
+            description:[
+              "M.E., (Pursuing PhD)","Areas of interest:","Power electronics, Electrial Vehicle Battery Management, Renewable Energy System",
+         ] },
+          // {
+          //   name: "Ms. Dipali Koshti",
+          //   image:
+          //     "https://fragnel.edu.in/images/crce/department/comps/dipali.jpg",
+          //   profile:
+          //     "https://frcrce.ac.in/images/crce/department/ecs/profile/dipali_koshti_profile.pdf",
+          //   description:
+          //     "M.E., (Pursuing PhD)<br><b>Areas of interest:</b><br> Deep Learning, Machine Learning, Mobile Computing, Soft Computing, Database Management Systems",
+          // },
+          // {
+          //   name: "Mr. Vaibhav Godbole",
+          //   image:
+          //     "https://fragnel.edu.in/images/crce/department/ecs/vaibhav.jpg",
+          //   profile:
+          //     "https://frcrce.ac.in/images/crce/department/ecs/profile/vaibhavprofile.pdf",
+          //   description:
+          //     "M.E., (Pursuing PhD)<br><b>Areas of interest:</b><br> Web Programming, Linux System Administration, Machine Learning, Bio-inspired Computation, Big Data Analytics",
+          // },
+          // {
+          //   name: "Mrs. Archana Lopes",
+          //   image:
+          //     "https://fragnel.edu.in/images/crce/department/ecs/archana.jpg",
+          //   profile:
+          //     "http://frcrce.ac.in/images/crce/department/ecs/profile/Archana_Profile.pdf",
+          //   description:
+          //     "M.E., (Pursuing PhD)<br><b>Areas of interest:</b><br>Soft Computing, Computer Vision, Machine Learning, Data structures and algorithms, Discrete structures, Automata theory, Object oriented programming",
+          // },
+          // {
+          //   name: "Mr. Jayen Modi",
+          //   image:
+          //     "https://fragnel.edu.in/images/crce/department/ecs/jayenmodi.jpg",
+          //   profile:
+          //     "https://frcrce.ac.in/images/crce/department/ecs/profile/Jayen_Modi_profile.pdf",
+          //   description:
+          //     "M.E., (Pursuing PhD)<br><b>Areas of interest:</b><br>Electronic Devices & Circuits, Signal Conditioning Circuit Design, Control Systems Engineering, Instrumentation Systems, Industrial Automation & Process Control, Management Information Systems, Project Management",
+          // },
+          // {
+          //   name: "Mrs. Prajakta Bhangale",
+          //   image:
+          //     "https://fragnel.edu.in/images/crce/department/it/prajakta.jpg",
+          //   profile: "",
+          //   description:
+          //     "M.E., (Pursuing PhD)<br><b>Areas of interest:</b><br> Security, Block Chain Technology, Big data Analysis, Java Programming",
+          // },
+          // {
+          //   name: "Mrs. Jeenal Rambhia",
+          //   image: "https://fragnel.edu.in/images/2024/06/28/jeenal.jpg",
+          //   profile:
+          //     "https://fragnel.edu.in/media/attachments/2024/06/28/jeenal-rambhia-profile.pdf",
+          //   description:
+          //     "M.E., (Pursuing PhD)<br><b>Areas of interest:</b><br> Biomedical Signal Processing, Neuroscience, Artificial Intelligence",
+          // },
+          // {
+          //   name: "Mrs. Garima Singh",
+          //   image:
+          //     "https://fragnel.edu.in/images/2024/08/17/image_123650291.jpg",
+          //   profile: "",
+          //   description:
+          //     "M.E.<br><b>Areas of interest:</b><br>VLSI Design, Internet of Things, Image Processing, Machine learning",
+          // },
         ];
       });
     </script>
