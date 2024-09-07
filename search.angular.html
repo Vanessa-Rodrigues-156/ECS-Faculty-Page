@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html
   lang="en"
+
   ng-app="facultySearchApp">
-  <!-- defined the main app  -->
+  <!-- defined the main app  and this ng-app is imp if not conncteed to the correct tag the entire code crashes [insert nessa crying:( ] -->
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -12,6 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
+  <!-- this ng controller tag is imp  -->
   <body ng-controller="FacultySearchController">
     <div class="container mx-auto p-4">
       <div class="mb-4">
@@ -24,6 +26,7 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- this is the main grid where the cards are displayed -->
         <div
           ng-repeat="faculty in filteredFaculties"
           class="bg-blue-100 p-4 border-2 border border-blue-900 rounded-lg shadow-md text-center">
@@ -42,9 +45,12 @@
     </div>
 
     <script>
+        // this is the main controller for the app
+        // this binds the search bar ka search term to the faculties ka json
       angular
         .module("facultySearchApp", [])
         .controller("FacultySearchController", function ($scope) {
+            // this is the json of the faculties 
           $scope.faculties = [
             {
           id: 1,
@@ -78,11 +84,14 @@
             " Deep Learning, Machine Learning, Mobile Computing, Soft Computing, Database Management Systems",
           qualification: "M.E., (Pursuing PhD)",
         },
+        // add the est of the faculties ka json here 
           ];
-
+         //
           $scope.filteredFaculties = $scope.faculties;
+          // this sets the initial value of the filtered faculties to all faculties
+          // so that all faculties are displayed initially
           $scope.searchTerm = "";
-
+          //this is what co pilot converted for my vanila code 
           $scope.onSearch = function () {
             $scope.filteredFaculties = $scope.faculties.filter(function (
               faculty
